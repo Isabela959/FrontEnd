@@ -5,7 +5,7 @@ let texto ="Aula de JavaScript";
 console.log(texto.length);//18
 
 //Maiúsculas e Minúsculas
-console.log(texto.toUpperCase()); //maiúsculo
+console.log(texto.toUpperCase()); //MAIÚSCULA
 console.log(texto.toLowerCase()); //minúsculo
 
 //Partes da String
