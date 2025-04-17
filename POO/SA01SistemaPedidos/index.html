@@ -19,7 +19,7 @@
         <h2>Cadastro de Produtos</h2>
         <input type="text" name="" id="produtoNome" placeholder="Nome Produto">
         <input type="text" name="" id="produtoPreco" placeholder="Preço">
-        <button onclick="sistema.cadastroProduto()">Cadastrar Produto</button>
+        <button onclick="sistema.cadastrarProduto()">Cadastrar Produto</button>
         <ul id="listaProdutos"></ul>
     </section>
 
@@ -31,9 +31,9 @@
         <h3>Produtos</h3>
         <div id="produtosDisponiveis"></div>
 
-        <h3>Desconto</h3>
+        <h3>Desconto (%)</h3>
         <input type="number" value="0" id="desconto">
-        <button onclick="sistema.finalizarPedido()">Finalizar Pedido</button>
+        <button onclick="sistema.criarPedido()">Finalizar Pedido</button>
     </section>
 
     <section>
