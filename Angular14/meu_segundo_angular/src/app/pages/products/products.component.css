@@ -1,0 +1,14 @@
+.container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    border: 1px solid #aaa;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
