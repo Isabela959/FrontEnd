@@ -4,28 +4,44 @@
         <label>Nome:</label>
         <input type="text" name="nome" [(ngModel)]="nome">
         <br>
+
         <label>Email:</label>
         <input type="email" name="email" [ngModel]="email">
         <br>
-        <label>Telefone</label>
+
+        <label>Telefone:</label>
         <input type="text" name="telefone" [(ngModel)]="telefone">
         <br>
-        <label>Gênero</label>
+
+        <label>Gênero:</label>
         <select name="genero" [(ngModel)]="genero">
-            <option value="">selecione</option>
+            <option value="">Selecione</option>
             <option value="feminino">Feminino</option>
             <option value="masculino">Masculino</option>
             <option value="outro">Outro</option>
         </select>
         <br>
-        <label for="">Idade</label>
+
+        <label for="">Idade:</label>
         <input type="number" name="idade" [(ngModel)]="idade">
         <br>
-        <label for="">Profissão</label>
+
+        <label for="">Profissão:</label>
         <input type="text" name="profissao" [(ngModel)]="profissao">
+        <br>
+
+    </form>
+    <br>
+
+    <div class="botoes">
+      <button type="button" (click)="enviarFormulario()">Enviar</button>
+      <button type="button" (click)="limparDados()">Limpar</button>
+    </div>
+    
         <br>
         <hr>
         <br>
+
         <h2>Dados do Usuário em Tempo Real</h2>
         <div class="view">
             <p><strong>Nome:</strong>{{nome}}</p>
@@ -35,6 +51,4 @@
             <p><strong>Idade:</strong>{{idade}}</p>
             <p><strong>Profissão:</strong>{{profissao}}</p>
         </div>
-
-    </form>
-</div>
+    </div>
