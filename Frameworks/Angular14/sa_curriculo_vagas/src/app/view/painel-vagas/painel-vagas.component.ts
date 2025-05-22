@@ -8,72 +8,58 @@ import { VagaService } from 'src/app/service/vaga.service';
   styleUrls: ['./painel-vagas.component.scss']
 })
 export class PainelVagasComponent implements OnInit{
-  public vaga: Vaga = new Vaga (0,"", "", "", 0);
-  //rastrear os dados da API
-  public vagas: Vaga[] = [];
-  // ARMAZENAR AS VAGAS DA API
+  //atributos
+  public vaga: Vaga = new Vaga(0, "", "", "", 0); // rastrear os dados do Formulário
+  // vetor para armazenar as informações do DB
+  public vagas:Vaga[] = [];
 
-  constructor(private _vagasService: VagaService){}
-  //estabelece o serviço de busca no servidor
+  constructor(private _vagasService: VagaService){} // serviço é criado ao ser construído o objeto
 
   ngOnInit(): void {
     this.listarVagas();
   }
 
-  //listar todas as vagas //GET
-  listarVagas() {
-    //Lista as vagas do servidor usando o serviço 'VagaService
-    this._vagasService.getVagas().subscribe((retornaVaga) => {
-      this.vagas = retornaVaga.map((item) => {
-        // Mapeia os dados retornados para objetos 'Vaga'
-        return new Vaga(
-          item.id,
-          item.nome,
-          item.foto,
-          item.descricao,
-          item.salario
-        );
-      });
-    });
+  //colocar as vagas na tabela
+  listarVagas(){
+    this._vagasService.getVagas().subscribe(
+      (retornoVaga) => {this.vagas = retornoVaga.map(
+        (item)=> Vaga.fromMap(item)
+      );}
+    )
   }
 
-  //lista apenas uma única vaga //PUT
-  listarVagaUnica(vaga: Vaga){
+  //listar vaga única
+  listarVagaUnica(vaga:Vaga){
     this.vaga = vaga;
   }
 
-  //cadastrar //POST
+  //cadastrar nova Vaga
   cadastrar(){
     this._vagasService.cadastrarVaga(this.vaga).subscribe(
       () => {
-        this.vaga = new Vaga(0, "", "", "", 0); //limpa o formulário
-        this.listarVagas(); //atualiza a lista
-      }
+        this.vaga = new Vaga(0, "", "", "", 0); // limpa o formulário
+        this.listarVagas();
+      },
+      (err) => {console.error("Erro ao Cadastrar Vaga", err);}
     );
   }
 
-  atualizar(id: number){
+  //atualizar nova Vaga
+  atualizar(id:number){
     this._vagasService.atualizarVaga(id, this.vaga).subscribe(
       () => {
-        //Após atualizar
-        this.vaga = new Vaga(0, "", "", "", 0); //limpa o formulário
-        this.listarVagas(); //atualiza a lista
+        this.vaga = new Vaga(0, "", "", "", 0); // limpa o formulário
+        this.listarVagas();
       },
-      (err) => {
-        console.error("Erro ao Atualizar", err);
-      }
-    );
+      (err) => {console.error("Erro ao Atualizar Vaga", err);}
+    )
   }
 
-  excluir(id: number){
+  //deletar vaga
+  excluir(id:number){
     this._vagasService.removerVaga(id).subscribe(
-      () => {
-        this.vaga = new Vaga(0, "", "", "", 0); //limpa o formulário
-        this.listarVagas(); //atualiza a lista
-      },
-      (err) => {
-        console.error("Erro ao Excluir", err);
-      }
+      () => { this.listarVagas();},
+      (err) => {console.error("Erro ao Deletar Vaga", err)}
     );
   }
 

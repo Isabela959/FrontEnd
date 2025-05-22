@@ -23,13 +23,7 @@ export class VagasComponent implements OnInit {
         //mapear os dados da API
         this.vagas = retornaVaga.map(
           (item) => {
-            return new Vaga(
-              item.id,
-              item.nome,
-              item.foto,
-              item.descricao,
-              item.salario
-            );
+            return Vaga.fromMap(item)
           }
         );
       }
