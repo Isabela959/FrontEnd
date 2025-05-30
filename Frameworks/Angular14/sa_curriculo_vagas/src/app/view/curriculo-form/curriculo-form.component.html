@@ -1,0 +1,62 @@
+<section class="curriculo-form">
+  <h2>Cadastro de Currículo</h2>
+
+  <form>
+    <label>Nome</label><input type="text" name="nome" [(ngModel)]="curriculo.nome"><br>
+    <label>Email</label><input type="text" name="email" [(ngModel)]="curriculo.email"><br>
+    <label>Telefone</label><input type="text" name="telefone" [(ngModel)]="curriculo.telefone"><br>
+    <label>Endereço</label><input type="text" name="endereco" [(ngModel)]="curriculo.endereco"><br>
+    <label>Resumo Profissional</label><textarea name="resumo" [(ngModel)]="curriculo.resumo"></textarea>
+    <label>Experiência</label><textarea name="experiencia" [(ngModel)]="curriculo.experiencia"></textarea>
+    <label>Formação</label><textarea name="formacao" [(ngModel)]="curriculo.formacao"></textarea>
+    <label>Idioma</label><input type="text" name="idioma" [(ngModel)]="curriculo.idioma"><br>
+    <label>Habilidades</label><input type="text" name="habilidades" [(ngModel)]="curriculo.habilidades"><br>
+
+    <button type="button" (click)="cadastrar()">Cadastrar Currículo</button>
+    <button type="button" (click)="atualizar(curriculo.id)">Atualizar Currículo</button>
+    <button type="button" (click)="excluir(curriculo.id)">Excluir Currículo</button>
+
+  </form>
+</section>
+
+<section class="lista-vagas">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>Resumo</th>
+        <th>Experiência</th>
+        <th>Formação</th>
+        <th>Idioma</th>
+        <th>Habilidades</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curriculo of curriculos" class="curriculo-row">
+        <td>{{ curriculo.id }}</td>
+        <td>{{ curriculo.nome }}</td>
+        <td>{{ curriculo.email }}</td>
+        <td>{{ curriculo.telefone }}</td>
+        <td>{{ curriculo.endereco }}</td>
+        <td>{{ curriculo.resumo }}</td>
+        <td>{{ curriculo.experiencia }}</td>
+        <td>{{ curriculo.formacao }}</td>
+        <td>{{ curriculo.idioma }}</td>
+        <td>{{ curriculo.habilidades }}</td>
+        <td>
+          <button type="button" (click)="listarCurriculoUnico(curriculo)" class="btn-listar">
+            Listar
+          </button>
+          <button type="button" (click)="excluir(curriculo.id)" class="btn-excluir">
+            Excluir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,35 +1,99 @@
 {
   "vagas": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Desenvolver FrontEnd Jr",
       "foto": "foto1.jpg",
       "descricao": "Trabalhar com HTML, CSS e JS",
       "salario": 4000
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Desenvolver BackEnd Pleno",
       "foto": "foto2.jpg",
       "descricao": "Trabalhar com Desenvolvimento Web",
       "salario": 7000
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Desenvolver Fullstack Senior",
       "foto": "foto3.jpg",
       "descricao": "Trabalhar com Desenvolvimento Web",
       "salario": 10000
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "Gerente de  Nuvem",
       "foto": "Foto4.jpg",
       "descricao": "Vaga de Gerente de Nuvem",
       "salario": 8500
     }
   ],
-  "curriculos":[
-    
+  "curriculos": [
+    {
+      "id": "2",
+      "nome": "Maria Souza",
+      "email": "maria@email.com",
+      "telefone": "(19) 98888-8888",
+      "endereco": "Rua B, 456",
+      "resumo": "Recém-formada buscando oportunidade como dev.",
+      "experiencia": "Estágio de 6 meses em empresa de TI",
+      "formacao": "Curso Técnico em Informática",
+      "idioma": "Espanhol intermediário",
+      "habilidades": [
+        "Python",
+        "Figma",
+        "Git"
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Carlos Mendes",
+      "email": "carlos@email.com",
+      "telefone": "(21) 97777-7777",
+      "endereco": "Av. Central, 789",
+      "resumo": "Engenheiro de software com 5 anos de experiência.",
+      "experiencia": "Trabalhou em grandes projetos nacionais.",
+      "formacao": "Engenharia da Computação",
+      "idioma": "Inglês fluente",
+      "habilidades": [
+        "Java",
+        "Spring Boot",
+        "Docker"
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Larissa Costa",
+      "email": "larissa@email.com",
+      "telefone": "(31) 96666-6666",
+      "endereco": "Rua das Flores, 321",
+      "resumo": "Designer UI/UX apaixonada por experiência do usuário.",
+      "experiencia": "Trabalhou em startups como freelancer.",
+      "formacao": "Design Digital",
+      "idioma": "Português nativo",
+      "habilidades": [
+        "Figma",
+        "Adobe XD",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Ricardo Lima",
+      "email": "ricardo@email.com",
+      "telefone": "(27) 95555-5555",
+      "endereco": "Rua Rio Branco, 100",
+      "resumo": "Dev mobile com foco em Flutter.",
+      "experiencia": "3 apps publicados na Play Store.",
+      "formacao": "Ciência da Computação",
+      "idioma": "Inglês técnico",
+      "habilidades": [
+        "Flutter",
+        "Dart",
+        "Firebase"
+      ]
+    }
   ]
 }

@@ -1,0 +1,93 @@
+// variáveis
+$cor-primaria: #007bff;
+$cor-secundaria: #6c757d;
+$cor-sucesso: #28a745;
+$cor-perigo: #dc3545;
+
+h2{
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #444;
+    font-size: 1rem;
+  }
+
+  input,
+  textarea {
+    width: calc(100% - 20px);
+    padding: 1rem 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+      border-color: $cor-primaria;
+      box-shadow: 0 0 5px rgba($cor-primaria, 0.5);
+    }
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 0.75rem;
+
+    &[type="button"]:nth-of-type(1) {
+      // botão cadastrar
+      background-color: $cor-sucesso;
+
+      &:hover {
+        background-color: darken($cor-sucesso, 10%);
+      }
+    }
+
+    &[type="button"]:nth-of-type(2) {
+      // botão atualizar
+      background-color: $cor-primaria;
+
+      &:hover {
+        background-color: darken($cor-primaria, 10%);
+      }
+    }
+
+    &[type="button"]:nth-of-type(3) {
+      // botão excluir
+      background-color: $cor-perigo;
+
+      &:hover {
+        background-color: darken($cor-perigo, 10%);
+      }
+    }
+  }
+}
+
+// opcional: responsividade simples
+@media (max-width: 640px) {
+  form {
+    padding: 1rem;
+
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+}

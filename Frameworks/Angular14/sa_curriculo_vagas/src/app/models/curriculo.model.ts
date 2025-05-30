@@ -1,5 +1,6 @@
 // Será feito pelos alunos =)
 
+// atributos do currículo
 export class Curriculo {
   constructor(
     public id: number,
@@ -11,7 +12,7 @@ export class Curriculo {
     public experiencia: string,
     public formacao: string,
     public idioma: string,
-    public habilidades: string[]
+    public habilidades: string
   ) { }
 
   toMap(): { [key: string]: any } {
