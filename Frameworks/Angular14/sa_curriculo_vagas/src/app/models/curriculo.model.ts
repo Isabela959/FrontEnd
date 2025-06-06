@@ -1,6 +1,6 @@
 // Será feito pelos alunos =)
 
-// atributos do currículo
+// Classe Modelo do Currículo com seus atributos
 export class Curriculo {
   constructor(
     public id: number,
@@ -15,6 +15,8 @@ export class Curriculo {
     public habilidades: string
   ) { }
 
+  // Método que transforma o objeto Curriculo em um objeto simples (mapa)
+  // Conjunto de pares chave-valor
   toMap(): { [key: string]: any } {
     return {
       id: this.id,
@@ -31,7 +33,6 @@ export class Curriculo {
   }
 
   //fromMap() tranforma as informações do BD -> objeto
-
   static fromMap(map: any): Curriculo {
     return new Curriculo(
       map.id,

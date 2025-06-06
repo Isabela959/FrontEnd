@@ -1,3 +1,4 @@
+// Criar Componente do Rodapé
 import { Component } from '@angular/core';
 
 @Component({

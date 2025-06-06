@@ -4,6 +4,10 @@ $cor-secundaria: #6c757d;
 $cor-sucesso: #28a745;
 $cor-perigo: #dc3545;
 
+body{
+  padding-bottom: 5rem;
+}
+
 h2{
   text-align: center;
   margin-bottom: 1.5rem;
@@ -11,7 +15,7 @@ h2{
 }
 
 form {
-  max-width: 600px;
+  max-width: 50rem;
   margin: 0 auto;
   padding: 2rem;
   border-radius: 8px;
@@ -40,6 +44,13 @@ form {
       box-shadow: 0 0 5px rgba($cor-primaria, 0.5);
     }
   }
+
+    .buttons-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 9vh;
+    }
 
   button {
     padding: 0.8rem 1.5rem;

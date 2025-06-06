@@ -1,3 +1,5 @@
+<!-- Seção do formulário para cadastro, atualização e exclusão de currículos -->
+
 <section class="curriculo-form">
   <h2>Cadastro de Currículo</h2>
 
@@ -12,17 +14,24 @@
     <label>Idioma</label><input type="text" name="idioma" [(ngModel)]="curriculo.idioma"><br>
     <label>Habilidades</label><input type="text" name="habilidades" [(ngModel)]="curriculo.habilidades"><br>
 
-    <button type="button" (click)="cadastrar()">Cadastrar Currículo</button>
-    <button type="button" (click)="atualizar(curriculo.id)">Atualizar Currículo</button>
-    <button type="button" (click)="excluir(curriculo.id)">Excluir Currículo</button>
+
+    <div class="buttons-container">
+      <!-- Botão para cadastrar um novo currículo -->
+      <button type="button" (click)="cadastrar()">Cadastrar Currículo</button>
+      <!-- Botão para atualizar e excluir o currículo passando o id -->
+      <button type="button" (click)="atualizar(curriculo.id)">Atualizar Currículo</button>
+      <button type="button" (click)="excluir(curriculo.id)">Excluir Currículo</button>
+    </div>
 
   </form>
-</section>
+</section><br><br>
 
+<!-- Seção que exibe a lista de currículos cadastrados em uma tabela -->
 <section class="lista-vagas">
   <table class="table">
     <thead>
       <tr>
+        <!-- Cabeçalho da tabela com os nomes dos campos do currículo -->
         <th>Código</th>
         <th>Nome</th>
         <th>Email</th>
@@ -37,7 +46,9 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Laço para exibir cada currículo da lista 'curriculos' -->
       <tr *ngFor="let curriculo of curriculos" class="curriculo-row">
+        <!-- Mostra os dados do currículo nas colunas correspondentes -->
         <td>{{ curriculo.id }}</td>
         <td>{{ curriculo.nome }}</td>
         <td>{{ curriculo.email }}</td>
@@ -49,9 +60,11 @@
         <td>{{ curriculo.idioma }}</td>
         <td>{{ curriculo.habilidades }}</td>
         <td>
+          <!-- Botão para carregar o currículo selecionado no formulário para edição -->
           <button type="button" (click)="listarCurriculoUnico(curriculo)" class="btn-listar">
             Listar
           </button>
+          <!-- Botão para excluir o currículo selecionado -->
           <button type="button" (click)="excluir(curriculo.id)" class="btn-excluir">
             Excluir
           </button>

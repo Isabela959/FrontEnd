@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './view/inicio/inicio.component';
-import { CurriculosComponent } from './view/curriculos/curriculos.component';
 import { VagasComponent } from './view/vagas/vagas.component';
 import { PainelVagasComponent } from './view/painel-vagas/painel-vagas.component';
 import { CurriculoFormComponent } from './view/curriculo-form/curriculo-form.component';

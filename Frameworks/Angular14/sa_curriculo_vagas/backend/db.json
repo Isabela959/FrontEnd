@@ -2,21 +2,21 @@
   "vagas": [
     {
       "id": "1",
-      "nome": "Desenvolver FrontEnd Jr",
+      "nome": "Desenvolvedor FrontEnd Jr",
       "foto": "foto1.jpg",
       "descricao": "Trabalhar com HTML, CSS e JS",
       "salario": 4000
     },
     {
       "id": "2",
-      "nome": "Desenvolver BackEnd Pleno",
+      "nome": "Desenvolvedor BackEnd Pleno",
       "foto": "foto2.jpg",
       "descricao": "Trabalhar com Desenvolvimento Web",
       "salario": 7000
     },
     {
       "id": "3",
-      "nome": "Desenvolver Fullstack Senior",
+      "nome": "Desenvolvedor Fullstack Senior",
       "foto": "foto3.jpg",
       "descricao": "Trabalhar com Desenvolvimento Web",
       "salario": 10000
@@ -24,7 +24,7 @@
     {
       "id": "4",
       "nome": "Gerente de  Nuvem",
-      "foto": "Foto4.jpg",
+      "foto": "foto4.jpg",
       "descricao": "Vaga de Gerente de Nuvem",
       "salario": 8500
     }
@@ -94,6 +94,18 @@
         "Dart",
         "Firebase"
       ]
+    },
+    {
+      "id": 0,
+      "nome": "Ana Beatriz Silva Costa",
+      "email": "ana.costa@gmail.com",
+      "telefone": "(19) 98765-4321",
+      "endereco": "Rua das Palmeiras, 123 – Jardim Bela Vista, Limeira – SP",
+      "resumo": "Profissional dedicada, com foco em resultados e facilidade para trabalhar em equipe. ",
+      "experiencia": "Assistente Administrativo – Grupo Luma (2022–2024)\nAtuação com controle de documentos, organização de agendas e suporte à gerência.",
+      "formacao": "Ensino Médio Completo – E.E. Professor Joaquim de Toledo Camargo (Concluído em 2021)",
+      "idioma": "Inglês intermediário – Cursando no CNA desde 2023",
+      "habilidades": "Pacote Office (Word, Excel, PowerPoint), Canva, Google Drive, noções de HTML e atendimento ao cliente."
     }
   ]
 }

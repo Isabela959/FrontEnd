@@ -3,12 +3,12 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem 1.5rem;
-  background-color: #eee;
+  background-color: #02253d;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
   a{
     text-decoration: none; // remove o sublinhado do texto
-    color: #777;
+    color: #94b8d7;
     font-weight: bold;
     font-size: 1.5rem;
   }
@@ -18,7 +18,7 @@
     gap: 1.5rem;
 
     .navLink{
-      color: #777;
+      color: #94b8d7;
       padding: 0.5rem 0;
       transition: color 0.3s ease; // transição de 0.3 segundos
 

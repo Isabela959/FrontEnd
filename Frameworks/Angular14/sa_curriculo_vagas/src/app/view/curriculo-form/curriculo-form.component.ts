@@ -8,18 +8,23 @@ import { CurriculoService } from 'src/app/service/curriculo.service';
   styleUrls: ['./curriculo-form.component.scss']
 })
 export class CurriculoFormComponent implements OnInit {
+  // Objeto para armazenar os dados do formulário, inicializado vazio
   public curriculo: Curriculo = new Curriculo(
     0, '', '', '', '', '', '', '', '', ''
   );
 
+  // Lista que armazenará os currículos
   public curriculos: Curriculo[] = [];
 
+  // Usa CurriculoService para comunicação com backend
   constructor(private _curriculoService: CurriculoService) { }
 
+  // Método que roda quando o componente é inicializado
   ngOnInit(): void {
-    this.listarCurriculos();
+    this.listarCurriculos(); // Carrega a lista de currículos ao iniciar
   }
 
+  // Busca todos os currículos via serviço e armazena na lista local
   listarCurriculos() {
     this._curriculoService.getCurriculos().subscribe(
       (retornoCurriculo) => {
@@ -28,11 +33,35 @@ export class CurriculoFormComponent implements OnInit {
     );
   }
 
+  // Carrega um currículo específico para edição
   listarCurriculoUnico(curriculo: Curriculo) {
     this.curriculo = curriculo;
   }
 
   cadastrar() {
+    // Verifica se todos os campos estão preenchidos
+    if (
+      !this.curriculo.nome ||
+      !this.curriculo.email ||
+      !this.curriculo.telefone ||
+      !this.curriculo.endereco ||
+      !this.curriculo.resumo ||
+      !this.curriculo.experiencia ||
+      !this.curriculo.formacao ||
+      !this.curriculo.idioma ||
+      !this.curriculo.habilidades
+    ) {
+      alert("Todos os Campos Devem ser Preenchidos.");
+      return;
+    }
+
+    //Valida se o email terminal com @gmail.com
+    if (!this.curriculo.email.endsWith("@gmail.com")) {
+      alert("Email Inválido");
+      return;
+    }
+
+    // Se tudo passar pelas validações, ele cria o novo currículoacabei
     this._curriculoService.cadastrarCurriculo(this.curriculo).subscribe(
       () => {
         this.curriculo = new Curriculo(0, '', '', '', '', '', '', '', '', '');

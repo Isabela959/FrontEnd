@@ -5,12 +5,14 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
 
   h1{
     color: #333;
     font-size: 2.5rem;
     margin-bottom: 1rem;
     text-align: center;
+    line-height: 3rem;
 
     @media (max-width: 780px){
       font-size: 2rem;
@@ -25,10 +27,34 @@
     color: #555;
     font-size: 1.3rem;
     line-height: 1.6;
+    margin-top: 2rem;
     text-align: center;
 
     @media (max-width: 780px){
       font-size: 1rem;
     }
   }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30vh; }
+
+    .buttonLink {
+      display: inline-block;
+      padding: 36px 80px;
+      background-color: #365b77;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttonLink:hover {
+      background-color: #021d34; }
 }

@@ -1,0 +1,25 @@
+.lista-curriculos{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+  max-width: 112rem;
+  gap: 2rem;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+
+  .card {
+  margin: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3 ease;
+  width: 34rem;
+
+  &:hover {
+  transform: translateY(-5px); // quando colocar o mouse em cima, ele sobe 5 px
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);   }
+}
+}

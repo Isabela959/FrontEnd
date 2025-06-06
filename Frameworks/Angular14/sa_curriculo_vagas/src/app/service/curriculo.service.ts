@@ -1,4 +1,4 @@
-// comunicação com oo Banco de Dados
+// Comunicação com oo Banco de Dados
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
