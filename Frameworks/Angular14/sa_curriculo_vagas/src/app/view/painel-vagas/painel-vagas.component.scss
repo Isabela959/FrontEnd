@@ -1,9 +1,12 @@
-//estilização do painel-vagas
-//declaração de variáveis em SCSS
+// variáveis
 $cor-primaria: #007bff;
 $cor-secundaria: #6c757d;
 $cor-sucesso: #28a745;
 $cor-perigo: #dc3545;
+
+body {
+  padding-bottom: 5rem;
+}
 
 h2 {
   text-align: center;
@@ -11,134 +14,142 @@ h2 {
   margin-top: 1.5rem;
 }
 
-form{
-  max-width: 600px;
+form {
+  max-width: 50rem;
   margin: 0 auto;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 
-  label{
+
+  label {
     display: block;
     margin-bottom: 0.5rem;
     color: #444;
     font-size: 1rem;
   }
-  input{
-    width: calc(100% - 20px);
-    padding: 1rem 10px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 1rem;
 
-    &:focus{
+  input,
+  textarea,
+    select {
+    width: 100%; // ocupa todo espaço disponível
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+
+    &:focus {
       outline: none;
       border-color: $cor-primaria;
-      box-shadow: 0,0,0, rgba($color: $cor-primaria, $alpha: 0.25);
+      box-shadow: 0 0 5px rgba($cor-primaria, 0.5);
     }
   }
 
-  button{
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9vh;
+  }
+
+  button {
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    color: #ffffff;
+    color: #fff;
     margin-right: 0.75rem;
 
-    &[type="button"]:nth-of-type(1){ // botão de cadastrar
-      background-color: $cor-secundaria;
+    &[type="button"]:nth-of-type(1) {
+      // botão cadastrar
+      background-color: $cor-sucesso;
 
-
-    &:hover{
-      background-color: darken($color: $cor-sucesso, $amount: 10%);
-    }}
-
-    &[type="button"]:nth-of-type(2){ // botão de atualizar
-      background-color: $cor-secundaria;
-
-
-    &:hover{
-      background-color: darken($color: #ffff00, $amount: 10%);
-    }}
-
-    &[type="button"]:nth-of-type(3){ // botão de atualizar
-      background-color: $cor-secundaria;
-
-
-    &:hover{
-      background-color: darken($color: $cor-perigo, $amount: 10%);
-    }}
-  }
-}
-
-// estilização da tabela
-
-.lista-vagas{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  overflow-x: auto;
-
-  .table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
-  }
-
-  td,th{
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #aaa;
-    vertical-align: middle;
-  }
-  thead{
-    background-color: #999;
-    th{
-      color: #444;
-      font-weight: bold;
+      &:hover {
+        background-color: darken($cor-sucesso, 10%);
+      }
     }
-  }
-  tbody{
-    tr{
-      &:hover{
-        background-color: lighten($color: #999, $amount: 5%);
+
+    &[type="button"]:nth-of-type(2) {
+      // botão atualizar
+      background-color: $cor-primaria;
+
+      &:hover {
+        background-color: darken($cor-primaria, 10%);
+      }
+    }
+
+    &[type="button"]:nth-of-type(3) {
+      // botão excluir
+      background-color: $cor-perigo;
+
+      &:hover {
+        background-color: darken($cor-perigo, 10%);
       }
     }
   }
 }
 
-.rodape{
-  height: 10vh;
+.lista-vagas {
+  margin-top: 4rem;
+  padding-bottom: 5rem;
 }
 
-btn-listar{
+.actions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-listar {
+  background-color: $cor-primaria;
+  color: #fff;
   border: none;
-  background-color: $cor-secundaria;
-  padding: 5px 10px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+
 
   &:hover {
-      background-color: lighten($color: #ffff00, $amount: 5%);
-    }
+    background-color: darken($cor-primaria, 10%);
+  }
 }
 
-btn-excluir{
+.btn-excluir {
+  background-color: $cor-perigo;
+  color: #fff;
   border: none;
-    background-color: $cor-secundaria;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: lighten($color: $cor-perigo, $amount: 5%);
+  &:hover {
+    background-color: darken($cor-perigo, 10%);
+  }
+}
+
+// opcional: responsividade simples
+@media (max-width: 640px) {
+  form {
+    padding: 1rem;
+
+    input,
+    textarea {
+      width: 100%;
     }
+  }
 }

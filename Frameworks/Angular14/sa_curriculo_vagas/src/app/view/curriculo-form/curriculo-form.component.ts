@@ -66,6 +66,7 @@ export class CurriculoFormComponent implements OnInit {
       () => {
         this.curriculo = new Curriculo(0, '', '', '', '', '', '', '', '', '');
         this.listarCurriculos();
+        alert("Currículo Cadastrado com Sucesso!");
       },
       (err) => {
         console.error('Erro ao cadastrar currículo', err);

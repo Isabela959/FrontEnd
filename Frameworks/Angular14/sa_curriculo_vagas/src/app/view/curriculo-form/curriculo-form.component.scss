@@ -28,15 +28,18 @@ form {
     font-size: 1rem;
   }
 
-  input,
-  textarea {
-    width: calc(100% - 20px);
-    padding: 1rem 10px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 1rem;
-    resize: vertical;
+    input,
+    textarea,
+    select {
+      width: 100%; // ocupa todo espaço disponível
+      padding: 0.8rem 1rem;
+      margin-bottom: 1.5rem;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      resize: vertical;
 
     &:focus {
       outline: none;
@@ -88,6 +91,52 @@ form {
         background-color: darken($cor-perigo, 10%);
       }
     }
+  }
+}
+
+.lista-curriculos {
+  padding-bottom: 5rem;
+}
+
+.actions-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-listar {
+  background-color: $cor-primaria;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+
+
+  &:hover {
+    background-color: darken($cor-primaria, 10%);
+  }
+}
+
+.btn-excluir {
+  background-color: $cor-perigo;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($cor-perigo, 10%);
   }
 }
 

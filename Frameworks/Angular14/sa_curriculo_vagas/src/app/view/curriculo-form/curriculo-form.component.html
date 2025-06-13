@@ -27,7 +27,7 @@
 </section><br><br>
 
 <!-- Seção que exibe a lista de currículos cadastrados em uma tabela -->
-<section class="lista-vagas">
+<section class="lista-curriculos">
   <table class="table">
     <thead>
       <tr>
@@ -60,6 +60,7 @@
         <td>{{ curriculo.idioma }}</td>
         <td>{{ curriculo.habilidades }}</td>
         <td>
+          <div class="actions-container">
           <!-- Botão para carregar o currículo selecionado no formulário para edição -->
           <button type="button" (click)="listarCurriculoUnico(curriculo)" class="btn-listar">
             Listar
@@ -68,6 +69,7 @@
           <button type="button" (click)="excluir(curriculo.id)" class="btn-excluir">
             Excluir
           </button>
+          </div>
         </td>
       </tr>
     </tbody>

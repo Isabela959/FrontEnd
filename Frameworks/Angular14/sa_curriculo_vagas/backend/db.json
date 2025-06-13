@@ -94,18 +94,6 @@
         "Dart",
         "Firebase"
       ]
-    },
-    {
-      "id": 0,
-      "nome": "Ana Beatriz Silva Costa",
-      "email": "ana.costa@gmail.com",
-      "telefone": "(19) 98765-4321",
-      "endereco": "Rua das Palmeiras, 123 – Jardim Bela Vista, Limeira – SP",
-      "resumo": "Profissional dedicada, com foco em resultados e facilidade para trabalhar em equipe. ",
-      "experiencia": "Assistente Administrativo – Grupo Luma (2022–2024)\nAtuação com controle de documentos, organização de agendas e suporte à gerência.",
-      "formacao": "Ensino Médio Completo – E.E. Professor Joaquim de Toledo Camargo (Concluído em 2021)",
-      "idioma": "Inglês intermediário – Cursando no CNA desde 2023",
-      "habilidades": "Pacote Office (Word, Excel, PowerPoint), Canva, Google Drive, noções de HTML e atendimento ao cliente."
     }
   ]
 }
