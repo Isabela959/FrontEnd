@@ -1,0 +1,24 @@
+/* Estilização da Lista de Tarefas  */
+
+ul{
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: auto;
+}
+li{
+    background-color:  #ddd;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
