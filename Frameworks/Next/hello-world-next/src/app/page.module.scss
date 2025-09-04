@@ -1,0 +1,28 @@
+$cor-primaria: #001483;
+$cor-secundaria: #ffc0f7;
+$text-color: #fff;
+
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:$text-color;
+    background: linear-gradient(135deg, $cor-primaria,$cor-secundaria);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.title{
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.subtitle{
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: lighten($text-color, 20%);
+    font-weight: bold;
+}
