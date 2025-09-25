@@ -56,7 +56,7 @@ classDiagram
 
     class Usuario{
         +String id
-        +Stirng nome
+        +String nome
         +String email
         +String senha
         +Enum funcao
@@ -82,6 +82,7 @@ classDiagram
         +String tipoManutencao
         +Enum status
         +String idTecnico
+        +String idEquipamento
         +CRUD()
     }
 
@@ -117,7 +118,7 @@ graph TD
     Admin([💻Administrador do Sistema])
 
     Tecnico --> caso1
-    Tecnico --> caso3
+    Tecnico --> caso2
     Tecnico --> caso5
 
     Gerente --> caso1
