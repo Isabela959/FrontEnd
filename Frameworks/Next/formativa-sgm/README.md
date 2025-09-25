@@ -104,11 +104,11 @@ Ilustra as interações dos diferentes tipos de usuários (Atores) com as funcio
 graph TD
 
     subgraph "SGM"
-        caso1 ([Fazer Login])
-        caso2 ([Gerenciar Ordens de Serviço - CRUD])
-        caso3 ([Gerenciar Equipamentos - CRUD])
-        caso4 ([Gerenciar Usuários])
-        caso4 ([Acessar o DashBord])
+        caso1([Fazer Login])
+        caso2([Gerenciar Ordens de Serviço - CRUD])
+        caso3([Gerenciar Equipamentos - CRUD])
+        caso4([Gerenciar Usuários])
+        caso4([Acessar o DashBord])
     end
 
     Tecnico([Técnico de Manutenção])
