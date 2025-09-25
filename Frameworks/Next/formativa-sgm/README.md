@@ -109,6 +109,7 @@ graph TD
         caso3([Gerenciar Equipamentos - CRUD])
         caso4([Gerenciar Usuários])
         caso4([Acessar o DashBord])
+        caso5([Acessar DashBoard])
     end
 
     Tecnico([Técnico de Manutenção])
