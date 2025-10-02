@@ -1,4 +1,4 @@
-// classe de modelagem de dados para Usuário
+// classe de modelagem de dados para a Ordem de Serviço
 
 import mongoose, { Document, Model, Schema } from "mongoose";
 

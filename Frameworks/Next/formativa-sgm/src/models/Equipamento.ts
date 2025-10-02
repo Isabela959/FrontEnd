@@ -17,7 +17,7 @@ const EquipamentoSchema:Schema<IEquipamento> = new Schema({
     localizacao: {type: String, required: true},
     numSerie: {type: String, required: true, unique: true},
     status: {type: String, 
-        enum: ["ativo", "inativo"], 
+        enum: ["ativo", "inativo", "manutencao"], 
         default: "ativo"
     }
 });
