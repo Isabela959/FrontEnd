@@ -157,3 +157,7 @@ graph TD
     B --> E[Mensagem de Erro]
 
 ```
+
+## Protótipos
+
+https://www.figma.com/design/xYvVimHr16QPOHdL4cHz6t/SGM-Prot%C3%B3tipo?node-id=0-1&t=1U3bGyVP4Pb6gslo-1

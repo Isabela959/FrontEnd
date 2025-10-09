@@ -23,14 +23,14 @@ const UsuarioSchema:Schema<IUsuario> = new Schema({
 });
 
 //middleware para hashear a senha
-// serve para hashear a senha antes de salvar no BD
+// serve para hashear(criptografar) a senha antes de salvar no BD
 UsuarioSchema.pre<IUsuario>('save', async function (next) {
     // se a senha não foi modificada ou se está nula
     if (!this.isModified('senha') || !this.senha) return next();
     try {
         //gema para criptografar a senha
         const salt = await bcrypt.genSalt(10);
-        // faz a criptografia da senh a partir da senha
+        // faz a criptografia da senha a partir da senha
         this.senha = await bcrypt.hash(this.senha, salt);
         //salva a senha criptografada
         next();
@@ -42,14 +42,13 @@ UsuarioSchema.pre<IUsuario>('save', async function (next) {
 //método para comparar senhas
 // quando faz o login (compara a senha digitada 
 // e criptografada com a senha criptografada do banco)
-UsuarioSchema.methods.compareSenha = function (senhaUsuario:string):
-Promise<boolean>{
+UsuarioSchema.methods.compareSenha = function (senhaUsuario:string):Promise<boolean>{
     return bcrypt.compare(senhaUsuario, this.senha);
 }
 
 // métodos de enviar e pegar informações do banco de dados
 //toMap // FromMap
-const Usuario: Model<IUsuario> = mongoose.models.User // recebo do bd 
+const Usuario: Model<IUsuario> = mongoose.models.Usuario // recebo do bd 
 || mongoose.model<IUsuario>("Usuario", UsuarioSchema); // mando para o bd
 
 export default Usuario;

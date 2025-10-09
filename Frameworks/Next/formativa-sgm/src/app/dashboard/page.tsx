@@ -1,41 +1,57 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/dist/server/api-utils";
+"use client";
 
-export default async function DashboardPage(){
-    const session = await getServerSession(authOptions);
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import DashboardTecnico from "../components/dashboards/DashboardTecnico";
+import DashboardAdmin from "../components/dashboards/DashboardAdmin";
+import DashboardGerente from "../components/dashboards/DashboardGerente";
 
-    // se não houver sessão, volta para o login
-    if (!session) {
-        redirect("/login");
-    }
+ //tela de UI
 
-    const renderDashboard = () =>{
-        switch (session.user?.role) {
-            case "admin":
-                return <DashboardAdmin/>;   
-                break;
-            case "gerente":
-                return <DashboardGerente/>;   
-                break;
-            case "tecnico":
-                return <DashboardTecnico/>;   
-                break;
-            default:
-                <p>Tipo de Usuário Desconhecido, Contate o Adminitrador</p>
-                break;
+export default function DashboardPage(){
+    const route = useRouter();
+    const [funcao, setFuncao] = useState<string | null>(null);
+
+    //antes de carregar os elementos visuais
+    useEffect(()=>{
+        const funcao = localStorage.getItem("funcao");
+        if(!funcao){
+            //se não tiver a função armazenada no localStorage -> devolve o usuário para tela de login
+            route.push("/login");
+        } else{
+            //atribui a variavel setFuncao -> o valor da LocalStorage
+            setFuncao(funcao);
         }
+    });
+
+    // método de logout
+    const handleLogout = async()=>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("funcao");
+        route.push("/login");
     };
 
+    //montar a tela de acordo com a função do usuário
+    const renderDashboard = () =>{
+        if(funcao?.toLowerCase() === "admin"){
+            return <DashboardAdmin/>;
+        }else if(funcao === "gerente"){
+            return <DashboardGerente/>;
+        }else if(funcao === "tecnico"){
+            return <DashboardTecnico/>;
+        }
+    }
+
+    // reactDOM
     return(
         <div>
             <header>
-                <h1>Bem-Vindo, {session.user?.name}!</h1>
-                <LogoutButton/>
+                <h1>Bem-Vindo</h1>
+                <button onClick={handleLogout}>Logout</button>
             </header>
             <main>
                 {renderDashboard()}
             </main>
         </div>
-    )
+    );
 }

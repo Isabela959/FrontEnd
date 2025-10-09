@@ -1,6 +1,6 @@
-"use-client";
-import { signIn } from "next-auth/react";
-import router, { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
  //interface do usuário
@@ -10,24 +10,40 @@ export default function LoginPage(){
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
 
-    const route = useRouter();
-    const handleSubmit = async (e: React.FormEvent) =>{
-        e.preventDefault();
-        setError("");
+    const route = useRouter(); // rotas de navegação em SPA Single Page Application
 
-        const result = await signIn("credentials", {
-            redirect: false,
-            email,
-            senha
-        });
-        if (result?.ok) {
-            //sucesso, redireciono para o dashboard
-            router.push("/dashboard");
-        }else{
-            setError("Email ou Senha Inválidos");
+    // ação quando enviar o formulário
+    const handleSubmit = async (e: React.FormEvent) =>{ 
+        e.preventDefault(); // evita o comportamento padrão do html
+        setError(""); // limpar a mensagem de erro quando enviar a senha e email
+
+        try {
+            const response = await fetch(
+                "/api/usuarios/login",
+                {
+                    method:"POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({email, senha})
+                }
+            );
+            // analisar a resposta obtida
+            const data = await response.json() // converte para json
+            if (data.success) {
+                // armazenar as informações obtidas do login no localStorage
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("funcao", data.usuario.funcao);
+                route.push("/dashboard"); // navega para a tela de dashboard
+            }else{
+                const erroData = data.error();
+                setError(erroData.message || "Falha de Login");
+            }
+        } catch (error) {
+            console.error("Erro de Login: ", error);
+            setError("Erro de Servidor: "+ error);
         }
     }
 
+    // REACTDOM
     return(
         <div>
             <form onSubmit={handleSubmit}>

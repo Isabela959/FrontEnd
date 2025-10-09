@@ -1,9 +1,7 @@
 // rotas que não precisam do ID
 
 import { createUsuario, getAllUsuario } from "@/controllers/UsuarioController";
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET(){
     //verifica a sessão do usuário
