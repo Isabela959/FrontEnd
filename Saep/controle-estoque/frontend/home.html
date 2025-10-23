@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Controle de Estoque</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Controle de Estoque</h1>
+    <div>
+      <span id="nomeUsuario">Usuário</span>
+      <a href="home.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="estoque.html">Estoque</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Bem-vindo ao Sistema</h2>
+    <div class="card-container">
+      <div class="card" onclick="location.href='produtos.html'">
+        <h3>Gerenciar Produtos</h3>
+        <p>Cadastre, edite e remova produtos do estoque</p>
+      </div>
+      <div class="card" onclick="location.href='estoque.html'">
+        <h3>Gestão de Estoque</h3>
+        <p>Controle entradas e saídas e visualize histórico</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+      © 2025 - Sistema de Controle de Estoque
+  </footer>
+
+  <script type="module">
+    import { logout, verificarLogin } from './assets/js/auth.js';
+    const usuario = verificarLogin();
+    document.getElementById('nomeUsuario').textContent = usuario.nome;
+    window.logout = logout;
+  </script>
+</body>
+</html>

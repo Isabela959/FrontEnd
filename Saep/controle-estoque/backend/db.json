@@ -1,0 +1,10 @@
+{
+  "usuarios": [
+    { "id": 1, "nome": "Admin", "email": "admin@empresa.com", "senha": "123456" }
+  ],
+  "produtos": [
+    { "id": 1, "nome": "Martelo de aço", "quantidade": 15, "estoqueMinimo": 5 },
+    { "id": 2, "nome": "Chave de fenda", "quantidade": 8, "estoqueMinimo": 3 }
+  ],
+  "movimentacoes": []
+}

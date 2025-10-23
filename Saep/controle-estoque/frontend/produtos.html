@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos - Controle de Estoque</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/produtos.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Controle de Estoque</h1>
+    <div>
+      <span id="nomeUsuario">Usuário</span>
+      <a href="home.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="estoque.html">Estoque</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Cadastro de Produtos</h2>
+    <form id="formProduto">
+      <input type="text" id="nomeProduto" placeholder="Nome do produto" required>
+      <input type="number" id="quantidadeProduto" placeholder="Quantidade" required>
+      <input type="number" id="estoqueMinimo" placeholder="Estoque mínimo" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <h3>Produtos Cadastrados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Estoque Mínimo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaProdutos">
+        <!-- Produtos carregados aqui -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>© 2025 - Sistema de Controle de Estoque</p>
+  </footer>
+
+  <script type="module">
+    import { logout, verificarLogin } from './assets/js/auth.js';
+    import { carregarProdutos, adicionarProduto, editarProduto, excluirProduto } from './assets/js/produtos.js';
+    
+    const usuario = verificarLogin();
+    document.getElementById('nomeUsuario').textContent = usuario.nome;
+    window.logout = logout;
+
+    carregarProdutos();
+
+    const form = document.getElementById('formProduto');
+    form.addEventListener('submit', adicionarProduto);
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Estoque - Controle de Estoque</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/estoque.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>Controle de Estoque</h1>
+    <div>
+      <span id="nomeUsuario">Usuário</span>
+      <a href="home.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="estoque.html">Estoque</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Gestão de Estoque</h2>
+    <form id="formMov">
+      <select id="selectProduto"></select>
+      <select id="tipoMov">
+        <option value="">Tipo de movimentação</option>
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+      </select>
+      <input type="number" id="quantidadeMov" placeholder="Quantidade" required>
+      <input type="date" id="dataMov" required>
+      <button type="submit">Registrar</button>
+    </form>
+
+    <h3>Histórico de Movimentações</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>Tipo</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th>Usuário</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaMovimentacoes">
+        <!-- Movimentações carregadas aqui -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>© 2025 - Sistema de Controle de Estoque</p>
+  </footer>
+
+  <script type="module">
+    import { logout, verificarLogin } from './assets/js/auth.js';
+    import { carregarProdutos, carregarMovimentacoes } from './assets/js/estoque.js';
+
+    const usuario = verificarLogin();
+    document.getElementById('nomeUsuario').textContent = usuario.nome;
+    window.logout = logout;
+
+    carregarProdutos().then(() => carregarMovimentacoes());
+  </script>
+</body>
+</html>

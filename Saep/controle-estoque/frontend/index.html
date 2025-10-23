@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Controle de Estoque</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Bem-vindo ao Controle de Estoque</h2>
+      <p>Digite suas credenciais para acessar o sistema</p>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+        <p id="erro" style="color:red;"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+      © 2025 - Sistema de Controle de Estoque
+  </footer>
+
+  <script type="module">
+    import { login } from './assets/js/auth.js';
+    const form = document.getElementById('loginForm');
+    const erro = document.getElementById('erro');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      const usuario = await login(email, senha);
+      if(usuario){
+        sessionStorage.setItem('usuario', JSON.stringify(usuario));
+        window.location.href = 'home.html';
+      } else {
+        erro.textContent = 'Email ou senha incorretos';
+      }
+    });
+  </script>
+</body>
+</html>
