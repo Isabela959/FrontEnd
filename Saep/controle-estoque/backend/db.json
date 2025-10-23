@@ -1,10 +1,25 @@
 {
   "usuarios": [
-    { "id": 1, "nome": "Admin", "email": "admin@empresa.com", "senha": "123456" }
+    { "id": 1, "nome": "Admin", "email": "admin@empresa.com", "senha": "123456" },
+    { "id": 2, "nome": "João Almoxarife", "email": "joao@empresa.com", "senha": "123456" },
+    { "id": 3, "nome": "Maria Gestora", "email": "maria@empresa.com", "senha": "123456" }
   ],
   "produtos": [
     { "id": 1, "nome": "Martelo de aço", "quantidade": 15, "estoqueMinimo": 5 },
-    { "id": 2, "nome": "Chave de fenda", "quantidade": 8, "estoqueMinimo": 3 }
+    { "id": 2, "nome": "Chave de fenda", "quantidade": 8, "estoqueMinimo": 3 },
+    { "id": 3, "nome": "Alicate Universal", "quantidade": 12, "estoqueMinimo": 4 },
+    { "id": 4, "nome": "Serrote", "quantidade": 5, "estoqueMinimo": 2 },
+    { "id": 5, "nome": "Parafusadeira", "quantidade": 6, "estoqueMinimo": 2 },
+    { "id": 6, "nome": "Chave Allen", "quantidade": 20, "estoqueMinimo": 5 },
+    { "id": 7, "nome": "Fita métrica", "quantidade": 10, "estoqueMinimo": 3 },
+    { "id": 8, "nome": "Nível de bolha", "quantidade": 7, "estoqueMinimo": 2 },
+    { "id": 9, "nome": "Lixa de madeira", "quantidade": 25, "estoqueMinimo": 10 },
+    { "id": 10, "nome": "Trena", "quantidade": 9, "estoqueMinimo": 3 }
   ],
-  "movimentacoes": []
+  "movimentacoes": [
+    { "id": 1, "produtoId": 1, "usuarioId": 2, "tipoMovimento": "entrada", "quantidade": 5, "data": "2025-10-23" },
+    { "id": 2, "produtoId": 2, "usuarioId": 2, "tipoMovimento": "saida", "quantidade": 3, "data": "2025-10-23" },
+    { "id": 3, "produtoId": 3, "usuarioId": 3, "tipoMovimento": "entrada", "quantidade": 7, "data": "2025-10-22" },
+    { "id": 4, "produtoId": 5, "usuarioId": 2, "tipoMovimento": "saida", "quantidade": 2, "data": "2025-10-21" }
+  ]
 }

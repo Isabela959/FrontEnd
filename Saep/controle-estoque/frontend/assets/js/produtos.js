@@ -1,24 +1,40 @@
 // produtos.js
-import { apiGet, apiPost, apiPut, apiDelete } from './api.js';
-
-// Elementos do DOM
 const tabela = document.getElementById('tabelaProdutos');
 const form = document.getElementById('formProduto');
-const buscaInput = document.getElementById('buscaProduto');
 
-// Carregar produtos do JSON Server
-export async function carregarProdutos(filtro = '') {
-  let produtos = await apiGet('/produtos');
+// Função para chamar o JSON Server
+async function apiGet(endpoint) {
+  const res = await fetch(`http://localhost:3000${endpoint}`);
+  return res.json();
+}
 
-  // Filtrar se houver termo de busca
-  if(filtro){
-    produtos = produtos.filter(p => p.nome.toLowerCase().includes(filtro.toLowerCase()));
-  }
+async function apiPost(endpoint, data) {
+  await fetch(`http://localhost:3000${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+}
 
-  // Limpar tabela
+async function apiPut(endpoint, data) {
+  await fetch(`http://localhost:3000${endpoint}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+}
+
+async function apiDelete(endpoint) {
+  await fetch(`http://localhost:3000${endpoint}`, {
+    method: 'DELETE'
+  });
+}
+
+// Carregar produtos
+async function carregarProdutos() {
+  const produtos = await apiGet('/produtos');
   tabela.innerHTML = '';
 
-  // Preencher tabela
   produtos.forEach(prod => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -36,48 +52,53 @@ export async function carregarProdutos(filtro = '') {
 }
 
 // Adicionar produto
-form.addEventListener('submit', async (e) => {
+function adicionarProduto(e) {
   e.preventDefault();
-  const nome = document.getElementById('nome').value;
-  const quantidade = parseInt(document.getElementById('quantidade').value);
+
+  const nome = document.getElementById('nomeProduto').value.trim();
+  const quantidade = parseInt(document.getElementById('quantidadeProduto').value);
   const estoqueMinimo = parseInt(document.getElementById('estoqueMinimo').value);
 
-  if(!nome || quantidade < 0 || estoqueMinimo < 0){
+  if (!nome || isNaN(quantidade) || isNaN(estoqueMinimo) || quantidade < 0 || estoqueMinimo < 0) {
     alert('Preencha os campos corretamente!');
     return;
   }
 
-  await apiPost('/produtos', { nome, quantidade, estoqueMinimo });
-  form.reset();
-  carregarProdutos();
-});
-
-// Busca
-buscaInput.addEventListener('input', () => {
-  carregarProdutos(buscaInput.value);
-});
+  apiPost('/produtos', { nome, quantidade, estoqueMinimo }).then(() => {
+    form.reset();
+    carregarProdutos();
+  });
+}
 
 // Editar produto
-window.editarProduto = async function(id){
-  const produtos = await apiGet('/produtos');
-  const prod = produtos.find(p => p.id === id);
-  if(!prod) return alert('Produto não encontrado!');
+function editarProduto(id) {
+  apiGet('/produtos').then(produtos => {
+    const prod = produtos.find(p => p.id === id);
+    if (!prod) return alert('Produto não encontrado!');
 
-  const novoNome = prompt('Novo nome:', prod.nome) || prod.nome;
-  const novaQuantidade = parseInt(prompt('Nova quantidade:', prod.quantidade)) || prod.quantidade;
-  const novoMinimo = parseInt(prompt('Novo estoque mínimo:', prod.estoqueMinimo)) || prod.estoqueMinimo;
+    const novoNome = prompt('Novo nome:', prod.nome);
+    if (novoNome === null) return;
 
-  await apiPut(`/produtos/${id}`, { nome: novoNome, quantidade: novaQuantidade, estoqueMinimo: novoMinimo });
-  carregarProdutos();
+    const novaQuantidade = prompt('Nova quantidade:', prod.quantidade);
+    if (novaQuantidade === null) return;
+
+    const novoMinimo = prompt('Novo estoque mínimo:', prod.estoqueMinimo);
+    if (novoMinimo === null) return;
+
+    apiPut(`/produtos/${id}`, {
+      nome: novoNome,
+      quantidade: parseInt(novaQuantidade),
+      estoqueMinimo: parseInt(novoMinimo)
+    }).then(() => carregarProdutos());
+  });
 }
 
 // Deletar produto
-window.deletarProduto = async function(id){
-  if(confirm('Deseja realmente excluir?')){
-    await apiDelete(`/produtos/${id}`);
-    carregarProdutos();
-  }
+function deletarProduto(id) {
+  if (!confirm('Deseja realmente excluir?')) return;
+  apiDelete(`/produtos/${id}`).then(() => carregarProdutos());
 }
 
 // Inicializar
+form.addEventListener('submit', adicionarProduto);
 carregarProdutos();

@@ -1,90 +1,83 @@
-// estoque.js
-import { apiGet, apiPost, apiPut } from './api.js';
+import { apiGet, apiPost } from './api.js';
+import { verificarLogin } from './auth.js';
 
-// Elementos do DOM
 const selectProduto = document.getElementById('selectProduto');
 const tipoMov = document.getElementById('tipoMov');
-const quantidadeInput = document.getElementById('quantidadeMov');
-const dataInput = document.getElementById('dataMov');
-const form = document.getElementById('formMov');
+const quantidadeMov = document.getElementById('quantidadeMov');
+const dataMov = document.getElementById('dataMov');
+const formMov = document.getElementById('formMov');
 const tabelaMov = document.getElementById('tabelaMovimentacoes');
 
-let produtos = [];
+const usuario = verificarLogin();
 
-// Carregar produtos e ordenar alfabeticamente
+// Carregar produtos no select
 export async function carregarProdutos() {
-  produtos = await apiGet('/produtos');
-  produtos.sort((a,b) => a.nome.localeCompare(b.nome));
-
+  const produtos = await apiGet('/produtos');
   selectProduto.innerHTML = '<option value="">Selecione um produto</option>';
-  produtos.forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p.id;
-    opt.textContent = p.nome;
-    selectProduto.appendChild(opt);
+
+  produtos.forEach(prod => {
+    const option = document.createElement('option');
+    option.value = prod.id; // ID do produto
+    option.textContent = prod.nome;
+    selectProduto.appendChild(option);
   });
 }
 
-// Carregar movimentações (opcional: para exibir histórico)
+// Carregar movimentações na tabela
 export async function carregarMovimentacoes() {
-  const movs = await apiGet('/movimentacoes');
+  const movimentacoes = await apiGet('/movimentacoes');
+  const produtos = await apiGet('/produtos');
+  const usuarios = await apiGet('/usuarios');
+
   tabelaMov.innerHTML = '';
-  movs.forEach(m => {
-    const prod = produtos.find(p => p.id === m.produtoId);
+
+  movimentacoes.forEach(mov => {
+    const produto = produtos.find(p => p.id === mov.produtoId);
+    const user = usuarios.find(u => u.id === mov.usuarioId);
+
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${m.id}</td>
-      <td>${prod ? prod.nome : 'Produto excluído'}</td>
-      <td>${m.tipo}</td>
-      <td>${m.quantidade}</td>
-      <td>${m.data}</td>
+      <td>${mov.id}</td>
+      <td>${produto ? produto.nome : 'Produto removido'}</td>
+      <td>${mov.tipoMovimento}</td>
+      <td>${mov.quantidade}</td>
+      <td>${mov.data}</td>
+      <td>${user ? user.nome : 'Usuário removido'}</td>
     `;
     tabelaMov.appendChild(tr);
   });
 }
 
-// Processar movimentação
-form.addEventListener('submit', async (e) => {
+// Registrar movimentação
+formMov.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const produtoId = parseInt(selectProduto.value);
   const tipo = tipoMov.value;
-  const quantidade = parseInt(quantidadeInput.value);
-  const data = dataInput.value;
+  const quantidade = parseInt(quantidadeMov.value);
+  const data = dataMov.value;
 
-  if(!produtoId || !tipo || !quantidade || !data){
+  if (!produtoId || !tipo || !quantidade || !data) {
     alert('Preencha todos os campos corretamente!');
     return;
   }
 
-  const produto = produtos.find(p => p.id === produtoId);
-
-  let novaQuantidade = produto.quantidade;
-  if(tipo === 'entrada') novaQuantidade += quantidade;
-  if(tipo === 'saida') novaQuantidade -= quantidade;
-
-  if(novaQuantidade < 0){
-    alert('Quantidade insuficiente para saída!');
-    return;
-  }
-
-  // Atualizar produto
-  await apiPut(`/produtos/${produtoId}`, {...produto, quantidade: novaQuantidade});
-
-  // Registrar movimentação
-  await apiPost('/movimentacoes', {
+  const novaMovimentacao = {
     produtoId,
-    tipo,
+    usuarioId: usuario.id,
+    tipoMovimento: tipo,
     quantidade,
-    data,
-    usuario: JSON.parse(sessionStorage.getItem('usuario')).nome
-  });
+    data
+  };
 
-  // Alerta se abaixo do estoque mínimo
-  if(novaQuantidade < produto.estoqueMinimo){
-    alert(`Atenção! Estoque do produto "${produto.nome}" abaixo do mínimo (${produto.estoqueMinimo})`);
-  }
+  await apiPost('/movimentacoes', novaMovimentacao);
+
+  // Atualizar tabela
+  carregarMovimentacoes();
 
   // Resetar formulário
-  form.reset();
-  carregarMovimentacoes();
+  formMov.reset();
 });
+
+// Inicializar
+carregarProdutos().then(() => carregarMovimentacoes());
