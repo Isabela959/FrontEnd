@@ -172,4 +172,4 @@ graph TD
 
 ## Protótipos
 
-https://www.figma.com/design/nyVrhHc6uDSuKG8gCaeGY9/Controle-de-Estoque-Prot%C3%B3tipo-M%C3%A9dia-Fidelidade?node-id=0-1&t=9w5hC6lIeFmI3gxP-1
+https://www.figma.com/design/nyVrhHc6uDSuKG8gCaeGY9/Controle-de-Estoque-Prot%C3%B3tipo-M%C3%A9dia---Fidelidade?node-id=0-1&t=jOdbDKoRAIdNCwUh-1
